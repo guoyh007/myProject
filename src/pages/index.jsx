@@ -1,12 +1,17 @@
 import React from 'react';
+// import Blockly from 'blockly';
+
 import styles from './index.less';
 import { formatMessage } from 'umi-plugin-locale';
 import Demo from './Demo';
 
-export default function() {
+function Container() {
+
   return (
     <div className={styles.normal}>
       <Demo />
+      {/* {Blockly.inject('blocklyDiv', <div/>)} */}
+
       <div className={styles.welcome} />
       <ul className={styles.list}>
         <li>
@@ -21,7 +26,10 @@ export default function() {
         </li>
       </ul>
 
-      <div className={styles.container}>FUCK ! 费堃xxxx</div>
+      <div className={styles.Container}>FUCK ! xxxx</div>
     </div>
   );
 }
+
+export default Container;
+// export default Blockly.inject('blocklyDiv', Container);
