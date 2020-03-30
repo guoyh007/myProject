@@ -3,13 +3,13 @@ import React from 'react';
 
 import styles from './index.less';
 import { formatMessage } from 'umi-plugin-locale';
-import Demo from './Demo';
+// import Demo from './Demo';
 
 function Container() {
 
   return (
     <div className={styles.normal}>
-      <Demo />
+      {/* <Demo /> */}
       {/* {Blockly.inject('blocklyDiv', <div/>)} */}
 
       <div className={styles.welcome} />

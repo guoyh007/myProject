@@ -2,12 +2,16 @@ import React from 'react';
 import styles from './index.css';
 import { Helmet } from 'react-helmet';
 import ico from '../assets/cong.png';
+import MemuConfig from './Menu.js';
+
 // import ico from '../assets/favico32.ico';
 
 const BasicLayout: React.FC = props => {
   return (
     <div className={styles.normal}>
-      <h1 className={styles.title}>HCM_薪酬模块_test</h1>
+      <h1 className={styles.title}>
+        <MemuConfig />
+      </h1>
       {props.children}
       <Helmet>
         <title>HCM</title>

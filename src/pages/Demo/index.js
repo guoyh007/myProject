@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Button } from 'antd';
+
+import React, { useEffect, useRef } from 'react';
 import Blockly from 'blockly';
 import * as Ch from 'blockly/msg/zh-hans';
 // import * as Blockly_core from 'blockly/core'; zh-hans.js
@@ -8,17 +8,9 @@ import 'blockly/python';
 
 import XmlBlockly from './blockly_xml';
 // 存放的xml
-import styles from './index.less';
 
 export default () => {
-  const [num,setNum] = useState(1);
-
   const blockId = useRef('blocklyDiv');// 薪酬模块
-
-  const click = useCallback(()=>{
-    const num2 = num + 1 ;
-    setNum(num2);
-  }, [num])
 
   useEffect(()=>{
     Blockly.setLocale(Ch); // 支持中文
@@ -37,10 +29,12 @@ export default () => {
       workspace.addChangeListener(myUpdateFunction);
 
       const xml_text = window.localStorage.getItem('xml_text');
-      const xml = Blockly.Xml.textToDom(xml_text);
-      Blockly.Xml.domToWorkspace(xml, workspace);
+      if (xml_text) {
+        const xml = Blockly.Xml.textToDom(xml_text);
+        Blockly.Xml.domToWorkspace(xml, workspace);
+      }
     }
-  },[blockId.current])
+  },[blockId])
 
   // Blockly.Blocks['lists_create_with'] = {
   //   /**
@@ -66,9 +60,7 @@ export default () => {
     <>
       <div id={blockId.current} style={{height: '715px', width: '100%', overflow: 'auto'}}></div>
       <XmlBlockly />
-      <div className={styles.drag} draggable>draggable</div>
-      <p>{num}</p>
-      <Button className={styles.container} onClick={click}>Hello UmiJS!</Button>
     </>
   )
 }
+// eslint-disable-next-line
